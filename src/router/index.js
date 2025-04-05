@@ -35,6 +35,16 @@ const routes = [
       component: () => import('../components/Admin/NhanVien/index.vue'),
       beforeEnter: checkLoginNhanVien,
     },
+    {
+      path: '/admin/the-loai',
+      component: () => import('../components/Admin/TheLoai/index.vue'),
+      beforeEnter: checkLoginNhanVien,
+    },
+    {
+      path: '/admin/phim',
+      component: () => import('../components/Admin/Phim/index.vue'),
+      beforeEnter: checkLoginNhanVien,
+    },
     
 ]
 
