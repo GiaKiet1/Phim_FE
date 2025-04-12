@@ -2,11 +2,17 @@ import { createRouter, createWebHistory } from "vue-router"; // cài vue-router:
 import checkLoginKhachHang from "./checkLoginKhachHang";
 import checkLoginNhanVien from "./checkLoginNhanVien";
 const routes = [
-    // {
-    //     path: '/',
-    //     component: () => import('../components/KhachHang/TrangChu/index.vue'),
-    //     meta: { layout: "client-view" },
-    // },
+    {
+        path: '/',
+        component: () => import('../components/KhachHang/TrangChu/index.vue'),
+        meta: { layout: "client-view" },
+    },
+    {
+      path: '/trang-chu',
+      component: () => import('../components/KhachHang/TrangChu/index.vue'),
+      meta: { layout: "client-view" },
+      beforeEnter: checkLoginKhachHang,
+  },
     {
       path: '/dang-nhap',
       component: () => import('../components/KhachHang/DangNhap/index.vue'),
