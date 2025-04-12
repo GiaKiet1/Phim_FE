@@ -19,6 +19,12 @@ const routes = [
       meta: { layout: "dangnhap-view" },
     },
     {
+      path: '/kich-hoat/:id_khach_hang',
+      component: () => import('../components/KhachHang/KichHoat/index.vue'),
+      meta: { layout: "dangnhap-view" },
+      props: true,
+    },
+    {
       path: '/dang-ky',
       component: () => import('../components/KhachHang/DangKy/index.vue'),
       meta: { layout: "dangnhap-view" },
