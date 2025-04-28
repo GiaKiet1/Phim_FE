@@ -88,6 +88,7 @@
                                 'password': "",
                             };
                             localStorage.setItem('key_khachhang', res.data.token)
+                            localStorage.setItem('id_khach_hang', res.data.id)
                             this.$router.push('/trang-chu')
                         }
                         else {

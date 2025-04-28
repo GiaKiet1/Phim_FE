@@ -14,12 +14,14 @@
 		</div>
         <BotClient></BotClient>
         </div>
+        <ChatbotManager />
 	</div>
 </template>
 <script>
 import TopClient from "../components/TopClient.vue";
 import MenuClient from "../components/MenuClient.vue";
 import BotClient from "../components/BotClient.vue";
+import { ChatbotManager } from "../../components/KhachHang/ChatBot";
 import "../../assets/js/bootstrap.bundle.min.js";
 import "../../assets/js/jquery.min.js";
 import "../../assets/plugins/simplebar/js/simplebar.min.js";
@@ -32,7 +34,7 @@ import "../../assets/js/pace.min.js";
 export default {
     name        :   "app",
     components  :   {
-        TopClient, MenuClient, BotClient
+        TopClient, MenuClient, BotClient, ChatbotManager
     }
 }
 </script>
@@ -51,4 +53,20 @@ export default {
 @import "../../assets/css/header-colors.css";
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css");
 
+/* Ensure chatbot is always visible */
+.wrapper {
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Override any conflicting z-index */
+.floating-chatbot {
+    position: fixed !important;
+    z-index: 99999 !important;
+}
+
+/* Ensure chat window is above other elements */
+.chat-window {
+    z-index: 99999 !important;
+}
 </style>
