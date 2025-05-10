@@ -170,6 +170,9 @@ export default {
                     this.loadTheLoai();
                     this.$toast.success(res.data.message);
                 }
+                else {
+                this.$toast.error(res.data.message);
+                }
                 })
                 .catch((res) => {
                 const list = Object.values(res.response.data.errors);
@@ -190,6 +193,9 @@ export default {
                     this.loadTheLoai();
                     this.$toast.success(res.data.message);
                 }
+                else {
+                this.$toast.error(res.data.message);
+                }
                 })
                 .catch((res) => {
                 const list = Object.values(res.response.data.errors);
@@ -209,6 +215,8 @@ export default {
                 if (res.data.status) {
                     this.loadTheLoai();
                     this.$toast.success(res.data.message);
+                }else {
+                this.$toast.error(res.data.message);
                 }
                 })
                 .catch((res) => {
@@ -229,6 +237,8 @@ export default {
                 if (res.data.status) {
                     this.$toast.success(res.data.message);
                     this.loadTheLoai();
+                }else {
+                this.$toast.error(res.data.message);
                 }
                 })
                 .catch((res) => {

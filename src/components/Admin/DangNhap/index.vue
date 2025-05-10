@@ -73,7 +73,7 @@
                                 'password': "",
                             };
                             localStorage.setItem('key_admin', res.data.token);
-                            this.$router.push('/admin/nhan-vien');
+                            this.$router.push('/admin');
                         }
                         else {
                             this.$toast.error(res.data.message);

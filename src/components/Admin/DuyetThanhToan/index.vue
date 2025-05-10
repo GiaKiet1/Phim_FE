@@ -4,15 +4,17 @@
             <h4 class="card-title mt-2">Danh Sach Thanh Toán Cần Duyệt</h4>
         </div>
         <div class="card-body">
-            <div class="tablee-responsive">
+            <div class="table-responsive">
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr class="text-center align-middle">
                             <th>STT</th>
                             <th>Tên Khách Hàng</th>
+                            <th>Tên Nhân Viên</th>
                             <th>Số Tiền</th>
                             <th>Ngày Thanh Toán</th>
                             <th>Nội Dung</th>
+                            <th>Hash</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -21,8 +23,12 @@
                             <tr class="text-center align-middle">
                                 <th>{{ i+1 }}</th>
                                 <td class="text-start">{{ v.hoten_kh }}</td>
+                               <td>{{ v.hoten_nv }}</td>
                                 <td class="text-end">{{ formatCurrency(v.so_tien_nap) }}</td>
                                 <td >{{formatDate(v.created_at)}}</td>
+                                <td>
+                                    {{ v.noi_dung }}
+                                </td>
                                 <td>
                                     {{ v.hash }}
                                 </td>

@@ -153,7 +153,7 @@ export default {
           // Thêm nút đăng nhập nếu chưa đăng nhập
           setTimeout(() => {
             this.messages.push({
-              text: 'Bạn có thể <a href="/login" class="login-link">đăng nhập tại đây</a> để kiểm tra số dư.',
+              text: 'Bạn có thể <a href="/dang-nhap" class="login-link">đăng nhập tại đây</a> để kiểm tra số dư.',
               sender: 'bot'
             });
           }, 1000);

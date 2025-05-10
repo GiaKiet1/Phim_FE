@@ -87,15 +87,16 @@
             <label>Email</label>
             <input type="text" class="form-control mt-1 mb-2" v-model="create.email" />
             <label>Mật Khẩu</label>
-            <input type="text" class="form-control mt-1 mb-2" v-model="create.password" />
+            <input type="password" class="form-control mt-1 mb-2" v-model="create.password" />
             <label>Ngày Sinh</label>
             <input type="date" class="form-control mt-1 mb-2" v-model="create.ngay_sinh" />
             <label>Số Điện Thoại</label>
             <input type="text" class="form-control mt-1 mb-2" v-model="create.so_dien_thoai" />
             <label>Quyền</label>
             <select v-model="create.id_quyen" class="form-control mt-1 mb-2">
-                <option value="1">Admin</option>
-                <option value="2">Nhân Viên</option>
+              <template v-for="(v,i) in listQuyen" :key="i">
+                <option :value="v.id">{{ v.ten_quyen }}</option>
+              </template>
   
             </select>
             <label>Tình Trạng</label>
@@ -129,15 +130,16 @@
             <label>Email</label>
             <input type="text" class="form-control mt-1 mb-2" v-model="edit.email" />
             <label>Mật Khẩu</label>
-            <input type="text" class="form-control mt-1 mb-2" v-model="edit.password" />
+            <input type="password" class="form-control mt-1 mb-2" v-model="edit.password" />
             <label>Ngày Sinh</label>
             <input type="date" class="form-control mt-1 mb-2" v-model="edit.ngay_sinh" />
             <label>Số Điện Thoại</label>
             <input type="text" class="form-control mt-1 mb-2" v-model="edit.so_dien_thoai" />
             <label>Quyền</label>
             <select v-model="edit.id_quyen" class="form-control mt-1 mb-2">
-              <option value="1">Admin</option>
-              <option value="2">Nhân Viên</option>
+              <template v-for="(v,i) in listQuyen" :key="i">
+                <option :value="v.id">{{ v.ten_quyen }}</option>
+              </template>
             </select>
           </div>
           <div class="modal-footer">
@@ -204,9 +206,23 @@
     },
     mounted() {
       this.loadNhanVien();
+      this.loadQuyen();
     },
     methods: {
-    
+      loadQuyen(){
+            axios
+                .get('http://127.0.0.1:8000/api/admin/phan-quyen/data', {
+                    headers: {
+                        Authorization: "Bearer " + localStorage.getItem("key_admin"),
+                    },
+                })
+                .then((res) => {
+                    if (res.data.status == false) {
+                        this.$toast.error(res.data.message)
+                    }
+                    this.listQuyen = res.data.data;
+                })
+      },
       timKiem() {
         axios
           .post(
@@ -244,6 +260,9 @@
               this.loadNhanVien();
               this.$toast.success(res.data.message);
             }
+            else {
+              this.$toast.error(res.data.message);
+            }
           })
           .catch((res) => {
             const list = Object.values(res.response.data.errors);
@@ -274,6 +293,8 @@
             if (res.data.status) {
               this.$toast.success(res.data.message);
               this.loadNhanVien();
+            }else {
+              this.$toast.error(res.data.message);
             }
           })
           .catch((res) => {
@@ -294,6 +315,8 @@
             if (res.data.status) {
               this.loadNhanVien();
               this.$toast.success(res.data.message);
+            }else {
+              this.$toast.error(res.data.message);
             }
           })
           .catch((res) => {
@@ -314,6 +337,8 @@
             if (res.data.status) {
               this.loadNhanVien();
               this.$toast.success(res.data.message);
+            }else {
+              this.$toast.error(res.data.message);
             }
           })
           .catch((res) => {

@@ -50,7 +50,9 @@
                                         </router-link>
                                     </div>
                                     <hr>
-                                    
+                                    <div class="col-12">
+                                    <GoogleLogin :callback="callbacklogin" class="w-100"/>
+                                  </div>
                                 </div>
                             </div>
                         </div>
@@ -62,6 +64,7 @@
   </template>
   <script>
   import axios from 'axios'
+import { decodeCredential } from 'vue3-google-login'
   export default {
     data() {
         return {
@@ -73,6 +76,27 @@
         }
     },
     methods: {
+
+        callbacklogin(response){
+        var user = {
+            'credential' : response.credential
+        };
+        axios
+            .post("http://127.0.0.1:8000/api/khach-hang/dang-nhap-google",  user)
+            .then((res)=>{
+                if (res.data.status == 1) {
+                          this.$toast.success(res.data.message);
+                          localStorage.setItem('key_khachhang', res.data.token)
+                          localStorage.setItem('id_khach_hang', res.data.id)
+                          this.$router.push('/trang-chu')
+                      }
+                      else {
+                          this.$toast.error(res.data.message);
+                      }
+                
+            })
+        
+    },
       
       togglePasswordVisibility() {
               this.showPassword = !this.showPassword;

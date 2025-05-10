@@ -4,7 +4,7 @@
   
       <hr class="border border-warning border-2 opacity-50" />
       <!-- Phim đề cử -->
-      <div class="card d-flex" style="background-color: black; width: auto">
+        <div class="card d-flex" style="background-color: black; width: auto">
         <div class="card-body mt-3">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-5 row-cols-xl-5 row-cols-xxl-5 product-grid">
             <template v-for="(v, i) in listPhimDeCu" :key="i">
@@ -52,7 +52,7 @@
           </div>
         </div>
       </div>
-    </div>
+      </div>
     <!-- Modal mota-->
     <div class="modal fade" id="mota" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">

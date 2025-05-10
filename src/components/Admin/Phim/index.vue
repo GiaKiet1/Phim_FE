@@ -367,7 +367,9 @@ export default {
                     if (res.data.status) {
                         this.loadPhim();
                         this.$toast.success(res.data.message);
-                    }
+                    }else {
+              this.$toast.error(res.data.message);
+            }
                 })
                 .catch((res) => {
                     const list = Object.values(res.response.data.errors);
@@ -387,7 +389,9 @@ export default {
                     if (res.data.status) {
                         this.loadPhim();
                         this.$toast.success(res.data.message);
-                    }
+                    }else {
+              this.$toast.error(res.data.message);
+            }
                 })
                 .catch((res) => {
                     const list = Object.values(res.response.data.errors);
@@ -407,7 +411,9 @@ export default {
                     if (res.data.status) {
                         this.loadPhim();
                         this.$toast.success(res.data.message);
-                    }
+                    }else {
+              this.$toast.error(res.data.message);
+            }
                 })
                 .catch((res) => {
                     const list = Object.values(res.response.data.errors);

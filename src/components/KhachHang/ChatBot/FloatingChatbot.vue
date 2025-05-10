@@ -40,6 +40,10 @@
                             <i class="bx bx-history"></i>
                             <span>Xem lịch sử nạp tiền</span>
                         </button>
+                        <button @click="checkPurchaseHistory" class="quick-btn">
+                            <i class="bx bx-purchase-tag"></i>
+                            <span>Xem lịch sử mua phim</span>
+                        </button>
                     </div>
                 </div>
 
@@ -202,7 +206,7 @@ export default {
                     // Thêm nút đăng nhập nếu chưa đăng nhập
                     setTimeout(() => {
                         this.messages.push({
-                            text: 'Bạn có thể <a href="/login" class="login-link">đăng nhập tại đây</a> để kiểm tra số dư.',
+                            text: 'Bạn có thể <a href="/dang-nhap" class="login-link">đăng nhập tại đây</a> để kiểm tra số dư.',
                             sender: 'bot',
                             time: this.getCurrentTime()
                         });
@@ -239,7 +243,7 @@ export default {
                     // Thêm nút đăng nhập nếu chưa đăng nhập
                     setTimeout(() => {
                         this.messages.push({
-                            text: 'Bạn có thể <a href="/login" class="login-link">đăng nhập tại đây</a> để xem lịch sử nạp tiền.',
+                            text: 'Bạn có thể <a href="/dang-nhap" class="login-link">đăng nhập tại đây</a> để xem lịch sử nạp tiền.',
                             sender: 'bot',
                             time: this.getCurrentTime()
                         });
@@ -249,6 +253,43 @@ export default {
                 console.error('Deposit history error:', error);
                 this.messages.push({
                     text: 'Xin lỗi, không thể lấy lịch sử nạp tiền lúc này. Vui lòng thử lại sau hoặc kiểm tra trực tiếp trên website.',
+                    sender: 'bot',
+                    time: this.getCurrentTime()
+                });
+            } finally {
+                this.isLoading = false;
+                this.scrollToBottom();
+            }
+        },
+
+        async checkPurchaseHistory() {
+            this.isLoading = true;
+            
+            try {
+                const response = await axios.get(`${this.apiBaseUrl}/chatbot/purchase-history`, {
+                    params: { userId: this.userId }
+                });
+                
+                this.messages.push({
+                    text: response.data.message,
+                    sender: 'bot',
+                    time: this.getCurrentTime()
+                });
+
+                if (!response.data.status && response.data.message.includes('đăng nhập')) {
+                    // Thêm nút đăng nhập nếu chưa đăng nhập
+                    setTimeout(() => {
+                        this.messages.push({
+                            text: 'Bạn có thể <a href="/dang-nhap" class="login-link">đăng nhập tại đây</a> để xem lịch sử mua phim.',
+                            sender: 'bot',
+                            time: this.getCurrentTime()
+                        });
+                    }, 1000);
+                }
+            } catch (error) {
+                console.error('Purchase history error:', error);
+                this.messages.push({
+                    text: 'Xin lỗi, không thể lấy lịch sử mua phim lúc này. Vui lòng thử lại sau hoặc kiểm tra trực tiếp trên website.',
                     sender: 'bot',
                     time: this.getCurrentTime()
                 });

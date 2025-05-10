@@ -19,7 +19,7 @@
 			<div class="user-box dropdown">
 				<a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
 					role="button" data-bs-toggle="dropdown" aria-expanded="false">
-					<img src="https://dzfullstack.com/assets/images/logo-img.png" class="user-img" alt="user avatar">
+					<img src="https://i.pinimg.com/736x/e3/90/23/e390232d11ed660f47a1002d9bbdbbcd.jpg" class="user-img" alt="user avatar">
 					<div class="user-info ps-3">
 						<p class="user-name mb-0">{{ user.name }}</p>
 						<p class="designattion mb-0">{{ user.email }}</p>
@@ -27,10 +27,10 @@
 				</a>
 				<ul class="dropdown-menu dropdown-menu-end">
 					<li>
-						<a class="dropdown-item" href="/"><i class="bx bx-user"></i><span>Profile</span></a>
+						<a class="dropdown-item" href="/admin/profile"><i class="bx bx-user"></i><span>Profile</span></a>
 					</li>
-					<li><a class="dropdown-item" href="javascript:;"><i
-								class='bx bx-log-out-circle'></i><span>Logout</span></a>
+					<li><a  v-on:click="logout()" class="dropdown-item" href="javascript:;"><i
+								class='bx bx-log-out-circle'></i><span>Đăng Xuất</span></a>
 					</li>
 				</ul>
 			</div>
@@ -38,17 +38,46 @@
 	</div>
 </template>
 <script>
+import axios from 'axios';
+
 export default {
 	data() {
 		return {
 			user: {}
 		}
 	},
+	methods: {
+		logout(){
+			axios
+			.get('http://127.0.0.1:8000/api/admin/dang-xuat', {
+				headers: {
+					'Authorization': 'Bearer ' + localStorage.getItem("key_admin")
+				}
+			})
+			.then((res)=>{
+					if(res.data.status){
+						localStorage.removeItem('key_admin');
+						localStorage.removeItem("name");
+						localStorage.removeItem("email");
+						localStorage.removeItem("status");
+						this.$toast.success(res.data.message);
+						this.$router.push('/admin/dang-nhap')
+					}else{
+						this.$toast.error('Có lỗi xảy ra')
+					}
+				})
+			.catch((err) => {
+				this.$toast.error("Có lỗi xảy ra. Vui lòng thử lại sau.");
+			})
+		},
+	},
 	mounted() {
 		this.user = {
 			name  : localStorage.getItem('name'),
 			email : localStorage.getItem('email'),
+			status: localStorage.getItem('status'),
 		}
+		
 	},
 }
 </script>

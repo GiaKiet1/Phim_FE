@@ -158,9 +158,9 @@
                 </div>
                 <div class="modal-body">
                     <label>Số Tiền</label>
-                    <input v-model="nap_tien.so_tien" type="number" class="form-control mt-1 mb-2">
+                    <input v-model="nap_tien.so_tien_can_nap" type="number" class="form-control mt-1 mb-2">
                     <label>Nội Dung</label>
-                    <input v-model="nap_tien.noi_dung" type="text" class="form-control mt-1 mb-2">
+                    <input v-model="nap_tien.ly_do_nap_tien" type="text" class="form-control mt-1 mb-2">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
@@ -197,11 +197,11 @@
                             <template v-for="(v, i) in list_lich_su" :key="i">
                                 <tr class="align-middle">
                                     <th class="text-center">{{ i + 1 }}</th>
-                                    <td>{{ v.ten_nv }}</td>
-                                    <td class="text-end">{{ formatVND(v.so_tien) }}</td>
+                                    <td>{{ v.hoten_nv }}</td>
+                                    <td class="text-end">{{ formatVND(v.so_tien_nap) }}</td>
                                     <td class="">{{ v.noi_dung }}</td>
                                     <td>{{ v.kieu_nap }}</td>
-                                    <td class="text-center">{{ v.created_at }}</td>
+                                    <td class="text-center">{{ formatDateTime(v.created_at) }}</td>
                                 </tr>
                             </template>
                         </tbody>
@@ -237,6 +237,15 @@ export default {
         
     },
     methods: {
+        formatDateTime(value) {
+            const date = new Date(value);
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const year = date.getFullYear();
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            return `${day}/${month}/${year} ${hours}:${minutes}`;
+        },
         loadLichSu(value){
             axios
                 .post('http://127.0.0.1:8000/api/admin/nap-tien/data-one', value, {
@@ -264,6 +273,9 @@ export default {
                         this.nap_tien = {};
                         this.loadKhachHang();
                     }
+                    else {
+                        this.$toast.error(res.data.message);
+                    }
                 })
                 .catch((res) => {
                     const listKhachHang = Object.values(res.response.data.errors);
@@ -283,6 +295,9 @@ export default {
                     if (res.data.status) {
                         this.loadKhachHang();
                         this.$toast.success(res.data.message);
+                    }
+                    else {
+                        this.$toast.error(res.data.message);
                     }
                 })
                 .catch((res) => {
@@ -332,6 +347,9 @@ export default {
                         this.loadKhachHang();
                         this.$toast.success(res.data.message);
                     }
+                    else {
+                        this.$toast.error(res.data.message);
+                    }
                 })
                 .catch((res) => {
                     const list = Object.values(res.response.data.errors);
@@ -351,6 +369,9 @@ export default {
                     if (res.data.status) {
                         this.loadKhachHang();
                         this.$toast.success(res.data.message);
+                    }
+                    else {
+                        this.$toast.error(res.data.message);
                     }
                 })
                 .catch((res) => {

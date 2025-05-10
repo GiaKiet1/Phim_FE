@@ -9,25 +9,25 @@
 			</div>
 			<div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
 			</div>
-		</div>
-		<nav class="navbar navbar-expand-xl w-100">
+		</div> 
+		<nav class="navbar navbar-expand-xl w-100 " >
 			<ul class="navbar-nav justify-content-start flex-grow-1 gap-1">
 				<div class="col-lg-4"></div>
 				<li class="nav-item">
 					<router-link to="/">
 						<a class="nav-link" href="/">
-							<div class="parent-icon"><i class="bx bx-home-circle"></i>
+							<div class="parent-icon"><i class="bx bx-home-circle text-white"></i>
 							</div>
-							<div class="menu-title">TRANG CHỦ</div>
+							<div class="menu-title text-white">TRANG CHỦ</div>
 						</a>
 					</router-link>
 				</li>
 				
                 <li class="nav-item dropdown">
 					<a href="javascript:;" class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown">
-						<div class="parent-icon"><i class="bx bx-home-circle"></i>
+						<div class="parent-icon"><i class="bx bx-home-circle text-white"></i>
 						</div>
-						<div class="menu-title">THỂ LOẠI</div>
+						<div class="menu-title text-white">THỂ LOẠI</div>
 					</a>
 					<ul class="dropdown-menu">
 						<li> <a class="dropdown-item" href="/the-loai/hanh-dong"><i class="bx bx-right-arrow-alt"></i>Hành Động</a>
@@ -56,9 +56,9 @@
                 <li class="nav-item">
 					<router-link to="/phim-rap">
 						<a class="nav-link" href="/phim-rap">
-							<div class="parent-icon"><i class="bx bx-home-circle"></i>
+							<div class="parent-icon"><i class="bx bx-home-circle text-white"></i>
 							</div>
-							<div class="menu-title">PHIM CHIẾU RẠP</div>
+							<div class="menu-title text-white">PHIM CHIẾU RẠP</div>
 						</a>
 					</router-link>
 				</li>
@@ -66,9 +66,9 @@
                 <li class="nav-item">
 					<router-link to="/phim-bo">
 						<a class="nav-link" href="/phim-bo">
-							<div class="parent-icon"><i class="bx bx-home-circle"></i>
+							<div class="parent-icon"><i class="bx bx-home-circle text-white"></i>
 							</div>
-							<div class="menu-title">PHIM BỘ</div>
+							<div class="menu-title text-white" >PHIM BỘ</div>
 						</a>
 					</router-link>
 				</li>

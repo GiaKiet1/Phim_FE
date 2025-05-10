@@ -17,7 +17,7 @@ export default {
     const shouldShowChatbot = computed(() => {
       // Không hiển thị chatbot trên các trang đăng nhập và đăng ký
       const hideChatbotRoutes = [
-        '/login',
+        '/dang-nhap',
         '/khach-hang/dang-ky',
         '/quen-mat-khau',
         '/dat-lai-mat-khau',

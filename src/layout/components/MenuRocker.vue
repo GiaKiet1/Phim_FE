@@ -50,7 +50,7 @@
 					</router-link>
 				</li>
 
-				<!-- <li class="nav-item">
+				<li class="nav-item">
 					<router-link to="/admin/lich-su-giao-dich">
 						<a class="nav-link" href="/admin/lich-su-giao-dich">
 							<div class="parent-icon"><i class="fa-solid fa-history"></i>
@@ -58,7 +58,16 @@
 							<div class="menu-title">Lịch Sử Giao Dịch</div>
 						</a>
 					</router-link>
-				</li> -->
+				</li>
+				<li class="nav-item">
+					<router-link to="/admin/duyet-thanh-toan">
+						<a class="nav-link" href="/admin/duyet-thanh-toan">
+							<div class="parent-icon"><i class="fa-solid fa-money-bill"></i>
+							</div>
+							<div class="menu-title">Duyệt Thanh Toán</div>
+						</a>
+					</router-link>
+				</li>
 				<li class="nav-item">
 					<router-link to="/admin/phim">
 						<a class="nav-link" href="/admin/phim">
@@ -74,6 +83,44 @@
 							<div class="parent-icon"><i class="fa-solid fa-list"></i>
 							</div>
 							<div class="menu-title">DS Thể Loại</div>
+						</a>
+					</router-link>
+				</li>
+				<li class="nav-item">
+					<router-link to="/admin/duyet-phim">
+						<a class="nav-link" href="/admin/duyet-phim">
+							<div class="parent-icon"><i class="fa-solid fa-eye"></i>
+							</div>
+							<div class="menu-title">Duyệt Phim</div>
+						</a>
+					</router-link>
+				</li>
+				
+				<li class="nav-item">
+					<router-link to="/admin/chuc-nang">
+						<a class="nav-link" href="/admin/chuc-nang">
+							<div class="parent-icon"><i class="fa-solid fa-cogs"></i>
+							</div>
+							<div class="menu-title">Chức Năng</div>
+						</a>
+					</router-link>
+				</li>
+				<li class="nav-item">
+					<router-link to="/admin/phan-quyen">
+						<a class="nav-link" href="/admin/phan-quyen">
+							<div class="parent-icon"><i class="fa-solid fa-user-lock"></i>
+							</div>
+							<div class="menu-title">Phân Quyền</div>
+						</a>
+					</router-link>
+				</li>
+				
+				<li class="nav-item">
+					<router-link to="/admin/thong-ke">
+						<a class="nav-link" href="/admin/thong-ke">
+							<div class="parent-icon"><i class="fa-solid fa-chart-pie"></i>
+							</div>
+							<div class="menu-title">Thống Kê</div>
 						</a>
 					</router-link>
 				</li>

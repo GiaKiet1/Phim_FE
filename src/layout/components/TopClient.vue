@@ -36,14 +36,12 @@
 								<a class="dropdown-item" href="/profile"><i class="bx bx-user"></i><span>Profile</span></a>
 							</li>
 							<li>
-								<a class="dropdown-item" href="/danh-sach-phim"><i class="fa-solid fa-list-ul"></i><span>Danh Sách Phim Đã Mua</span></a>
+								<a class="dropdown-item" href="/danh-sach-phim-da-mua"><i class="fa-solid fa-list-ul"></i><span>Danh Sách Phim Đã Mua</span></a>
 							</li>
 							<li><a v-on:click="logout()" class="dropdown-item" href="javascript:;"><i
 									class='bx bx-log-out-circle'></i><span>Đăng Xuất</span></a>
 							</li>
-							<li><a v-on:click="logoutAll()" class="dropdown-item" href="javascript:;"><i
-										class='bx bx-log-out-circle'></i><span>Đăng Xuất Tất Cả</span></a>
-							</li>
+							
 						</ul>
 				</template>
 					
@@ -102,6 +100,7 @@ export default {
 			.then((res) => {
 				if(res.data.status){
 					localStorage.removeItem("key_khachhang");
+					localStorage.removeItem("id_khach_hang");
 					localStorage.removeItem("name");
 					localStorage.removeItem("email");
 					localStorage.removeItem("so_du");
@@ -117,31 +116,7 @@ export default {
 				this.$toast.error("Có lỗi xảy ra. Vui lòng thử lại sau.");
 			})
 		},
-		logoutAll(){
-			axios
-				.get('http://localhost:8000/api/khach-hang/logout-all', {
-                    headers : {
-                        Authorization: 'Bearer ' + localStorage.getItem("key_khachhang")
-                    }
-                })
-				.then((res)=>{
-					if(res.data.status){
-					localStorage.removeItem("key_khachhang");
-					localStorage.removeItem("name");
-					localStorage.removeItem("email");
-					localStorage.removeItem("so_du");
-					localStorage.removeItem("status");
-					this.$toast.success(res.data.message);
-					this.$router.push('/dang-nhap');
-				}
-				else{
-					this.$toast.error(res.data.message);
-				}
-				})
-				.catch((res) =>{
-					this.$toast.error('Đã xảy ra lỗi')
-				})
-		},
+	
 		formatCurrency(value) {
 			if (!value) return '0 VND';
 			return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value);

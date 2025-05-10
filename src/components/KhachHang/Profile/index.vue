@@ -382,7 +382,7 @@ export default {
         },
         doiMatKhau() {
             axios
-                .post("http://127.0.0.1:8000/api/khach-hang/doi-mat-khau", this.doi_mat_khau, {
+                .post("http://127.0.0.1:8000/api/khach-hang/doi-mat-khau-profile", this.doi_mat_khau, {
                     headers: {
                         Authorization: 'Bearer ' + localStorage.getItem("key_khachhang")
                     }

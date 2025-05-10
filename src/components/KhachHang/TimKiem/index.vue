@@ -7,7 +7,7 @@
             <template v-for="(v,i) in listPhim" :key="i">
                 <div class="col">               
                     <router-link :to="'/chi-tiet-phim/' + v.id + '-' + v.slug_phim">
-                        <div class="col">
+                        <div class="col-12 d-flex justify-content-center mb-3">
                             <div class="card bg-dark" style="height: 400px;width: 300px;">
                                 <img :src="v.hinh_anh"
                                     class="card-img-top" style="height: 330px;" alt="..." />

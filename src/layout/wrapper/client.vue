@@ -4,7 +4,7 @@
             <div >
                 <TopClient style="background-image: url(https://i.pinimg.com/originals/d8/09/d8/d809d8c766aa3ff8d5196179ef1cdc19.png);"></TopClient>
             </div>
-            <MenuClient></MenuClient>
+            <MenuClient style="background-image: url(https://i.pinimg.com/originals/d8/09/d8/d809d8c766aa3ff8d5196179ef1cdc19.png);"></MenuClient>
 		</div>
 		<div style="background-image: url(https://images.pexels.com/photos/8892/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500);">
             <div class="page-wrapper mb-1">
